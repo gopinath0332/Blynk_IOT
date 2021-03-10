@@ -41,6 +41,7 @@
 
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
+#include "credential.h"
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
@@ -48,8 +49,8 @@ char auth[] = "Jy_XFCLNaCuNfQIkhpiwXQFSDH9XowgV";
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
-char ssid[] = "Alpha_Home";
-char pass[] = "Home123*";
+char ssid[] = WIFI_SSID;
+char pass[] = WIFI_PASSWD;
 
 void setup()
 {

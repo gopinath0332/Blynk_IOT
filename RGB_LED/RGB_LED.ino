@@ -37,6 +37,7 @@
 /* Comment this out to disable prints and save space */
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
+#include "credential.h"
 #include <BlynkSimpleEsp8266.h>
 #include <SPI.h>
 #define FASTLED_ESP8266_RAW_PIN_ORDER
@@ -47,8 +48,8 @@
 #define COLOR_ORDER GRB
 CRGB leds1[NUM_LEDS1];
 char auth[] = "tLTYZXlx0FIfTrMr7tSaPdYBqGIqNDFY";
-char ssid[] = "Alpha_Home";
-char pass[] = "Home123*";
+char ssid[] = WIFI_SSID;
+char pass[] = WIFI_PASSWD;
 #define PIN1 D1
 int data=255;
 int r,g,b;
