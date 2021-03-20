@@ -1,12 +1,12 @@
 /**
- * Ref: https://iotcircuithub.com/nodemcu-esp8266-blynk-home-automation/
- * 
- * 
- * Note: 
- * Low stage relay latch switch used, 0 - ON, 1 - OFF
- * Hence, reverse the Virtual Pin values in Blynk App swtich, 1 - 0
- * 
- */
+   Ref: https://iotcircuithub.com/nodemcu-esp8266-blynk-home-automation/
+
+
+   Note:
+   Low stage relay latch switch used, 0 - ON, 1 - OFF
+   Hence, reverse the Virtual Pin values in Blynk App swtich, 1 - 0
+
+*/
 
 
 #define BLYNK_PRINT Serial
@@ -63,30 +63,22 @@ void checkBlynkStatus()
   }
 }
 
-void with_internet()
-{
+void handleSwitches() {
+  // Handle switch 1
   int switchState = digitalRead(SwitchPin1);
   if (digitalRead(SwitchPin1) == LOW) {
-    // delay(200);
-    if(toggleState_1 == 1){
+    if (toggleState_1 == 1) {
       toggleState_1 = 0;
       digitalWrite(RelayPin1, HIGH);
       Blynk.virtualWrite(VPIN_BUTTON_1, 1);
     }
-
-  }else{
-    // delay(200);
-    if(toggleState_1 == 0 ){
+  } else {
+    if (toggleState_1 == 0 ) {
       toggleState_1 = 1;
       digitalWrite(RelayPin1, LOW);
       Blynk.virtualWrite(VPIN_BUTTON_1, 0);
     }
   }
-}
-
-void without_internet()
-{
-  //  Serial.println("without internet");
 }
 
 void setup()
@@ -122,8 +114,5 @@ void loop()
 
   timer.run(); // Initiates SimpleTimer
 
-  if (wifiFlag == 0)
-    with_internet();
-  else
-    without_internet();
+  handleSwitches();
 }
